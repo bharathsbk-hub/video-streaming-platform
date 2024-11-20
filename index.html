@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Amplify Authentication</title>
+    <script src="https://cdn.jsdelivr.net/npm/aws-amplify@4.0.0/dist/aws-amplify.min.js"></script>
+</head>
+<body>
+
+    <!-- Sign Up Form -->
+    <div id="sign-up-form">
+        <h2>Sign Up</h2>
+        <form id="sign-up">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br><br>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br><br>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="sign-in-form" style="display: none;">
+        <h2>Sign In</h2>
+        <form id="sign-in">
+            <label for="signin-email">Email:</label>
+            <input type="email" id="signin-email" required><br><br>
+
+            <label for="signin-password">Password:</label>
+            <input type="password" id="signin-password" required><br><br>
+
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        // AWS Amplify Configuration
+        Amplify.configure({
+            Auth: {
+                region: 'us-east-1', // Change to your AWS region
+                userPoolId: 'us-east-1_tPBaU3L97', // Your Cognito User Pool ID
+                userPoolWebClientId: '3eujvgn92i3bf60bsift8e86l5', // Your Web Client ID
+            }
+        });
+
+        // Sign-up form submission
+        document.getElementById("sign-up").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Log the values to ensure they're being captured correctly
+            console.log("Sign Up Form Submitted");
+            console.log("Email:", email, "Username:", username, "Password:", password);
+
+            // Call AWS Amplify Auth signUp
+            Amplify.Auth.signUp({
+                username,
+                password,
+                attributes: { email }
+            })
+            .then(data => {
+                console.log("Sign-up successful:", data);
+                alert("Sign-up successful. Please check your email for verification.");
+                document.getElementById("sign-up-form").style.display = "none";
+                document.getElementById("sign-in-form").style.display = "block";
+            })
+            .catch(err => {
+                console.error("Error signing up:", err);
+                alert("Error signing up: " + err.message);
+            });
+        });
+    </script>
+</body>
+</html>

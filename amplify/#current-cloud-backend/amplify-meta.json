@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-videostreaming-dev-5f288-authRole",
+      "UnauthRoleArn": "arn:aws:iam::941377135654:role/amplify-videostreaming-dev-5f288-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::941377135654:role/amplify-videostreaming-dev-5f288-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-videostreaming-dev-5f288-deployment",
+      "UnauthRoleName": "amplify-videostreaming-dev-5f288-unauthRole",
+      "StackName": "amplify-videostreaming-dev-5f288",
+      "StackId": "arn:aws:cloudformation:us-east-1:941377135654:stack/amplify-videostreaming-dev-5f288/66e05e90-a4de-11ef-a567-0afffe7eb57d",
+      "AmplifyAppId": "d3kavly22h9sjf"
+    }
+  },
+  "auth": {
+    "videostreamingeeca45ef": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-videostreaming-dev-5f288-deployment/amplify-cfn-templates/auth/videostreamingeeca45ef-cloudformation-template.json",
+        "logicalId": "authvideostreamingeeca45ef"
+      },
+      "lastPushTimeStamp": "2024-11-17T13:13:17.515Z",
+      "output": {
+        "UserPoolId": "us-east-1_q7RWYqo0s",
+        "AppClientIDWeb": "649jced26frgo2355l53ohd4mt",
+        "AppClientID": "3s1kfaba9jh4spma5j9u1kij70",
+        "IdentityPoolId": "us-east-1:356fa90b-a13f-457e-85df-748416a39a12",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:941377135654:userpool/us-east-1_q7RWYqo0s",
+        "IdentityPoolName": "videostreamingeeca45ef_identitypool_eeca45ef__dev",
+        "UserPoolName": "videostreamingeeca45ef_userpool_eeca45ef"
+      },
+      "lastPushDirHash": "kQnelk9g0hLC4Wt3SBdPItfC0Ig="
+    }
+  }
+}
